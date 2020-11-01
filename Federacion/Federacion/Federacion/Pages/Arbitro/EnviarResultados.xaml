@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Arbitro.EnviarResultados"
+             Title="Enviar Resultados">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <!--<ScrollView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView
+                    HasUnevenRows="True"
+                    IsPullToRefreshEnabled="True"
+                    x:Name="listaPartidos"
+                    SeparatorVisibility="Default">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Tapped="Partido_Tapped">
+                                    <Frame CornerRadius="15"
+                                       HasShadow="True"
+                                       Margin="5"
+                                       BackgroundColor="{Binding Color}">
+                                        --><!--<Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command=""/>
+                                    </Frame.GestureRecognizers>--><!--
+                                        <StackLayout Orientation="Horizontal">
+                                            <Grid HorizontalOptions="StartAndExpand">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Label x:Name="lblEquipos" 
+                                                   Text="{Binding Equipos}"
+                                               TextColor="{Binding ColorLetra}"
+                                               FontAttributes="Bold"/>
+                                                <Label x:Name="lblCategoria"
+                                                   Grid.Column="1"
+                                               TextColor="{Binding ColorLetra}"
+                                               Text="{Binding AbreviaturaCategoria}"
+                                               />
+                                                <Label x:Name="lblFuncion"
+                                                   Grid.Row="1"
+                                               TextColor="{Binding ColorLetra}"
+                                                   FontAttributes="Italic"
+                                                   FontSize="Medium"
+                                               Text="{Binding DescripcionFuncion}"
+                                               />
+                                                <Label x:Name="lblUbicacion"
+                                               Grid.Row="2"
+                                               TextColor="{Binding ColorLetra}"
+                                               Text="{Binding Ubicacion}"/>
+                                                <Label x:Name="lblFecha"
+                                               Grid.Row="2"
+                                                    Grid.Column="1"
+                                               TextColor="{Binding ColorLetra}"
+                                               Text="{Binding FechaPartido, StringFormat='{0:dd/MM/yy HH:mm}'}"
+                                              />
+                                            </Grid>
+                                            <Image HorizontalOptions="End"
+                                               VerticalOptions="Center"
+                                               Source="flechaderecha.png"
+                                               HeightRequest="40"
+                                               WidthRequest="30"></Image>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </ScrollView>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

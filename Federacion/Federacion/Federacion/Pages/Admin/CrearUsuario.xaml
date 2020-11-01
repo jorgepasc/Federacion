@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Admin.CrearUsuario"
+             Title="Nuevo Usuario">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <Label Text="Datos nuevo usuario: "
+                   x:Name="lblInfo"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                VerticalOptions="Center" 
+                HorizontalOptions="Start" />
+                <Frame BorderColor="Black" Margin="0,5,0,5" BackgroundColor="LightCyan">
+                    <StackLayout>
+                        <Grid Margin="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="6*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Orientation="Horizontal">
+                                <Label x:Name="lblUsuario"
+                                   VerticalOptions="Center"
+                                   Text="Usuario "/>
+                                <Entry x:Name="txtUsuario"
+                                   Grid.Column="1"                                   
+                                   Placeholder="Introduzca el nombre del usuario"
+                                   Keyboard="Text"
+                                   MaxLength="9"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1">
+                                <Label Text="Contraseña "
+                                   VerticalOptions="Center"
+                                   Grid.Column="3"/>
+                                <Entry x:Name="txtPass"
+                                   Placeholder="Introduzca la contraseña"
+                                   Grid.Column="4"
+                                   MaxLength="20"
+                                   Keyboard="Text"
+                                   IsPassword="True"/>
+                                <Switch x:Name="switchMostrarPass" Toggled="SwitchMostrarPass_Toggled" Margin="3,0,0,0" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Grid.Row="1">
+                                <Label Text="El nuevo usuario es administrador "
+                               VerticalOptions="Center"/>
+                                <Switch x:Name="IsAdmin"
+                                Toggled="IsAdmin_Toggled"/>
+                            </StackLayout>
+                        </Grid>
+                        <Picker x:Name="pickerArbitros" 
+                            Title="Selecciona el arbitro al que asociar el usuario" 
+                            ItemDisplayBinding="{Binding Alias}"
+                            IsVisible="True"
+                            Margin="4,1,4,4"/>
+                        <Picker x:Name="pickerAdmins" 
+                            Title="Selecciona el administrador al que asociar el usuario"                             
+                            ItemDisplayBinding="{Binding Alias}"
+                            IsVisible="False"
+                            Margin="4,1,4,4"/>
+                    </StackLayout>
+                </Frame>
+                <Grid Margin="5,7,5,7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnReiniciar"
+                        Text="REINICIAR"
+                        Clicked="BtnReiniciar_Clicked"
+                        BackgroundColor="DarkCyan"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        CornerRadius="5"
+                        TextColor="White"/>
+                    <Button x:Name="btnConfirmar"
+                        Grid.Column="1"
+                        Text="CONFIRMAR"
+                        Clicked="BtnConfirmar_Clicked"
+                        BackgroundColor="DarkCyan"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        CornerRadius="5"
+                        TextColor="White"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

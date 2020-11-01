@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Admin.VisualizarNominas"
+             x:Name="VisualizarNominasPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView Padding="15">
+            <StackLayout>
+                <StackLayout Padding="7">
+                    <Label x:Name="lblInfo" 
+                           Text="Lista de nóminas: "
+                           FontSize="Medium"
+                           Margin="8,4,4,4"/>
+                    <Frame BackgroundColor="LightCyan" x:Name="frame" BorderColor="DarkGray" Margin="8,4,4,4">
+                        <StackLayout>
+                            <SearchBar Placeholder="Filtra por alias" TextChanged="SearchBar_TextChanged" Margin="4"/>
+                                <ListView                        
+                                x:Name="listaNominas"
+                                SeparatorVisibility="Default"
+                                HeightRequest="600">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Frame CornerRadius="15"
+                                               HasShadow="True" 
+                                               BorderColor="DarkCyan"
+                                               Margin="4">
+                                                    <StackLayout Orientation="Horizontal" 
+                                                             VerticalOptions="Center">
+                                                        <Label Text="{Binding Alias}" WidthRequest="150" FontAttributes="Bold" VerticalOptions="Center" FontSize="Medium"/>
+                                                        <Label Text="{Binding PeriodoNomina}" Margin="4" FontSize="Medium" VerticalOptions="Center"/>
+                                                        <Label  
+                                                       FontAttributes="Bold"
+                                                       HorizontalOptions="End"
+                                                       FontSize="Medium"
+                                                       VerticalOptions="Center"
+                                                       Text="{Binding Total, StringFormat='{0} €'}"/>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Frame x:Name="frameTotal" BorderColor="DarkGray" CornerRadius="10" Margin="8,8,20,8" HorizontalOptions="End">
+                <Label x:Name="lblTotal" FontAttributes="Bold" 
+                       FontSize="Medium" HorizontalOptions="End" Margin="6"/>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

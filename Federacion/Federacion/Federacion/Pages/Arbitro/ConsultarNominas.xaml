@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Arbitro.ConsultarNominas"
+             x:Name="ConsultarNominasPage">
+    <TabbedPage.Children>
+        <!--Nomina mensual-->
+        <ContentPage Title="MENSUAL" IconImageSource="mensualcolor.png">
+            <ContentPage.ToolbarItems>
+                <ToolbarItem Icon="volver.png" Clicked="BtnSalir_Clicked" Priority="1"/>
+            </ContentPage.ToolbarItems>
+            <ContentPage.Content>
+                <StackLayout Padding="15">
+                    <ScrollView>
+                        <StackLayout>
+                            <StackLayout>
+                                <Frame BorderColor="DarkGray" CornerRadius="10">
+                                    <StackLayout>
+                                        <Label x:Name="lblMensual" Text="No hay nóminas de este mes"
+                                           Margin="5" HorizontalOptions="Center"
+                                           FontSize="Medium" IsVisible="False"/>
+                                        <ListView
+                                            HasUnevenRows="True"    
+                                            IsPullToRefreshEnabled="False"
+                                            x:Name="listaPartidos"
+                                            SeparatorVisibility="None">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <Frame CornerRadius="10"
+                                                               Margin="4"
+                                                               HasShadow="True">
+                                                            <Grid HorizontalOptions="StartAndExpand">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="8*"/>
+                                                                    <ColumnDefinition Width="4*"/>
+                                                                    <ColumnDefinition Width="3*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="*"/>
+                                                                    <RowDefinition Height="*"/>
+                                                                    <RowDefinition Height="*"/>
+                                                                </Grid.RowDefinitions>
+                                                                <Label x:Name="lblEquipos" 
+                                                                       Text="{Binding Equipos}"
+												                       FontAttributes="Bold"/>
+                                                                <Label x:Name="lblCategoria"
+                                                                       Grid.Column="1"
+												                       Text="{Binding AbreviaturaCategoria}"/>
+                                                                <Label x:Name="lblFuncion"
+                                                                       Grid.Row="1"
+                                                                       FontAttributes="Italic"
+                                                                       FontSize="Medium"
+                                                                       Text="{Binding DescripcionFuncion}"/>
+                                                                <Label x:Name="lblUbicacion"
+                                                                       Grid.Row="2"
+                                                                       Text="{Binding Ubicacion}"/>
+                                                                <Label x:Name="lblFecha"
+                                                                       Grid.Row="2"
+                                                                       Grid.Column="1"
+                                                                       Text="{Binding FechaPartido, StringFormat='{0:dd/MM/yy HH:mm}'}"/>
+                                                                <Label x:Name="lblImporte"
+                                                                       Grid.Column="2"
+                                                                       Grid.Row="1"                                                             
+                                                                       FontAttributes="Bold"
+                                                                       Text="{Binding Importe, StringFormat='{0}€'}"/>
+                                                            </Grid>
+                                                        </Frame>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                    <Frame CornerRadius="10" BorderColor="DarkGray" HorizontalOptions="End">
+                        <Label                                      
+                         x:Name="lblImporte"
+                         HorizontalOptions="End"
+                         FontAttributes="Bold"
+                         FontSize="Large"
+                         Margin="15"/>
+                    </Frame>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+        <!--Registro nóminas-->
+        <ContentPage Title="HISTORICO" IconImageSource="anualcolor.png">
+            <ContentPage.ToolbarItems>
+                <ToolbarItem Icon="volver.png" Clicked="BtnSalir_Clicked" Priority="1"/>
+            </ContentPage.ToolbarItems>
+            <ContentPage.Content>
+                <StackLayout Padding="15">
+                    <ScrollView>
+                        <Frame BorderColor="DarkGray" CornerRadius="10">
+                            <StackLayout>
+                                <Label x:Name="lblHistorico" Text="No hay nóminas de este año"
+                                       Margin="5" HorizontalOptions="Center"
+                                       FontSize="Medium" IsVisible="False"/>
+                                <ListView
+                                 HasUnevenRows="True"
+                                 x:Name="listaNominas"
+                                 IsPullToRefreshEnabled="False"
+                                 VerticalOptions="StartAndExpand"
+                                 SeparatorVisibility="Default"
+                                 Margin="5">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Margin="3">
+                                                    <StackLayout Orientation="Horizontal" 
+                                                             HorizontalOptions="StartAndExpand">
+                                                        <Label x:Name="lblPeriodoNomina"    
+                                                            HorizontalOptions="Start"
+                                                            Text="{Binding PeriodoNomina}"
+                                                            FontSize="Medium"/>
+                                                        <Label x:Name="lblImporte" 
+                                                            Text="{Binding Total, StringFormat='{0}€'}"
+                                                            FontAttributes="Bold"
+                                                            FontSize="Medium"
+                                                            HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </Frame>
+                    </ScrollView>
+                    <Frame CornerRadius="10" BorderColor="DarkGray" HorizontalOptions="End">
+                        <Label                                      
+                             x:Name="lblImporteHistorico"
+                             HorizontalOptions="End"
+                             FontAttributes="Bold"
+                             FontSize="Large"
+                             Margin="15"/>
+                    </Frame>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>

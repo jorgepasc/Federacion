@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Arbitro.PartidoDetalles"
+             Title="Detalles Partido">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Padding="5" VerticalOptions="StartAndExpand">
+            <ScrollView>
+                <Grid>
+                    <StackLayout Padding="10">
+                        <Label HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="Start"
+                           Text="DETALLES PARTIDO"
+                           TextDecorations="Underline"
+                           FontSize="Large"
+                           FontAttributes="Bold"/>
+                        <StackLayout>
+                            <Frame BorderColor="DarkGray" Padding="5" Margin="2">
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="lblEquipos"
+                                           Text="Equipos:"
+                                           FontAttributes="None"
+                                           WidthRequest="115"/>
+                                        <Label x:Name="txtEquipos"                           
+                                           FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="lblCategoria"                               
+                                           Text="Categoría: "
+                                           FontAttributes="None"
+                                           WidthRequest="115"/>
+                                        <Label x:Name="txtCategoria"                               
+                                           FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="lblFecha"                        
+                                           Text="Fecha y hora: "
+                                           FontAttributes="None"
+                                           WidthRequest="115"/> 
+                                        <Label x:Name="txtFecha"                               
+                                           FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="lblFuncion"                               
+                                           Text="Función: "
+                                           FontAttributes="None"
+                                           WidthRequest="115"/>
+                                        <Label x:Name="txtFuncion"                                                       
+                                           FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="lblUbicacion"                               
+                                           Text="Lugar: "
+                                           FontAttributes="None"
+                                           WidthRequest="115" Margin="0,0,0,10"/>
+                                        <Label x:Name="txtUbicacion"                               
+                                           FontAttributes="Bold" Margin="0,0,0,10"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="lblObservaciones"
+                                           Text="Observaciones: "
+                                           FontAttributes="None"
+                                           WidthRequest="115"/>
+                                        <Label x:Name="txtObservaciones"                                                 
+                                           FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BorderColor="DarkGray" Padding="5" Margin="4">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label x:Name="lblArbitros"
+                                   Text="Árbitros:"
+                                   FontAttributes="None"
+                                   WidthRequest="130"/>
+                                    <ListView
+                                    x:Name="listaArbitros"
+                                    IsPullToRefreshEnabled="False"
+                                    HeightRequest="300"
+                                    SeparatorVisibility="Default" Margin="35,0,10,10">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label x:Name="lblAlias" 
+                                                       Text="{Binding Alias}"
+                                                       FontAttributes="Bold"/>
+                                                            <Label x:Name="lblFuncion" 
+                                                       Text="{Binding Funcion, StringFormat='- {0}'}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label x:Name="lblNombre" 
+                                                       Text="{Binding Nombre}"/>
+                                                            <Label x:Name="lblApellidos" 
+                                                       Text="{Binding Apellidos}" Margin="2,0,2,0"/>
+                                                            <Label x:Name="lblNumTelefono" 
+                                                       Text="{Binding NumTelefono}"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <Grid MinimumHeightRequest="25" VerticalOptions="End" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Entry x:Name="entryLocal" 
+                        Grid.Column="0"
+                        Placeholder="Local" 
+                        HorizontalOptions="Center"
+                        Keyboard="Numeric"/>
+                <Label Text="_"
+                   Grid.Column="1"
+                   HorizontalOptions="Center" 
+                   Margin="0,4,0,0"/>
+                <Entry x:Name="entryVisitante" 
+                         Grid.Column="2"
+                         Placeholder="Visitante" 
+                         HorizontalOptions="Center"
+                         Keyboard="Numeric"/>
+                <Button Text="Enviar resultado" 
+                        BackgroundColor="CornflowerBlue"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Margin="0,1,8,3"
+                           Grid.Column="3"
+                           x:Name="btnEnviar"
+                           Clicked="EnviarResultado_Clicked"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

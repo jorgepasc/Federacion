@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Arbitro.ConsultarInformes"
+             x:Name="ConsultarPartidosPage"
+             Title="Informes">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Padding="5">
+            <StackLayout>
+                <Label x:Name="lblInfo" 
+                       HorizontalOptions="Start"
+                       VerticalOptions="End"
+                       FontSize="Medium"
+                       Margin="7,10,0,3"/>
+                <StackLayout>
+                    <Frame CornerRadius="10"
+                           Margin="4"
+                           BorderColor="DarkGray">
+                    <ListView
+                        HasUnevenRows="True"
+                        IsPullToRefreshEnabled="False"
+                        SeparatorVisibility="None"
+                        x:Name="listaInformes">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame HasShadow="True"
+                                           Margin="4"
+                                           CornerRadius="15"
+                                           BackgroundColor="{Binding Color}">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label x:Name="lblFecha"
+                                                   Text="{Binding FechaInforme, StringFormat='{0:dd/MM/yy}'}"
+                                                   FontAttributes="Bold"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start"
+                                                   VerticalOptions="Center"
+                                                   TextColor="White"/>
+                                            <Label x:Name="lblTextoInforme"
+                                                   Text="{Binding TextoInforme}"                                                   
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="Center"
+                                                   TextColor="White"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

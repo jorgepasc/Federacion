@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Arbitro.Disponibilidad"
+             x:Name="DisponibilidadPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Clicked="BtnSalir_Clicked" Priority="1"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Padding="10">
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Label x:Name="lblInfo"
+                       Text="Disponibilidad: "
+                       FontSize="Medium"
+                       Margin="3"/>
+                <Frame BorderColor="Black">
+                    <StackLayout>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Viernes tarde" Grid.Row="0" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Margin="12"/>
+                            <Switch x:Name="cbViernes"  Grid.Row="0" Grid.Column="1" HorizontalOptions="End" Margin="10,0,10,0"/>
+                            <Label Text="Sabado mañana" Grid.Row="1" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Margin="12"/>
+                            <Switch x:Name="cbSabado1" Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Margin="10,0,10,0"/>
+                            <Label Text="Sabado tarde" Grid.Row="2" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Margin="12"/>
+                            <Switch x:Name="cbSabado2" Grid.Row="2" Grid.Column="1" HorizontalOptions="End" Margin="10,0,10,0"/>
+                            <Label Text="Domingo mañana" Grid.Row="3" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Margin="12"/>
+                            <Switch x:Name="cbDomingo1" Grid.Row="3" Grid.Column="1" HorizontalOptions="End" Margin="10,0,10,0"/>
+                            <Label Text="Domingo tarde" Grid.Row="4" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Margin="12"/>
+                            <Switch x:Name="cbDomingo2" Grid.Row="4" Grid.Column="1" HorizontalOptions="End" Margin="10,0,10,0"/>
+                            <Editor x:Name="txtComentarios" Placeholder="Introduce información extra"
+                                    AutoSize="TextChanges"
+                                    MaxLength="400" Grid.Row="5" Grid.Column="0" Margin="12,5,10,2" MinimumHeightRequest="200"
+                                    HorizontalOptions="StartAndExpand"/>
+                            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"/>-->
+                            <!--</Grid>-->
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                                <!--<Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>-->
+                            <Button x:Name="btnReiniciar" Text="REINICIAR" Grid.Column="0"
+                                    TextColor="White" BackgroundColor="CornflowerBlue" Clicked="BtnReiniciar_Clicked" Margin="5"/>
+                            <Button x:Name="btnEnviar" Text="ENVIAR" Grid.Column="1"
+                                    TextColor="White" BackgroundColor="CornflowerBlue" Clicked="BtnEnviar_Clicked" Margin="5"/>
+                            <!--Button x:Name="btnVolver" Text="VOLVER" Grid.ColumnSpan="2" Grid.Row="1"
+                                    TextColor="White" BackgroundColor="Blue" Clicked="BtnVolver_Clicked" Margin="5" IsVisible="False"/>-->
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

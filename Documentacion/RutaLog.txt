@@ -1,0 +1,3 @@
+C:\Users\jorge\AppData\Local\Packages\ad441acf-c8b3-4651-b559-18078a98fe61_29xt0fvck9e4y\LocalState\recuerdame.txt
+
+/data/user/0/com.companyname.Federacion/files/.local/share

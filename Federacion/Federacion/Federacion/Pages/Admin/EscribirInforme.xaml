@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Admin.EscribirInforme"
+             Title="Árbitro Informe">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Padding="10">
+            <StackLayout Padding="5">
+                <Label x:Name="lblInfo"
+                       Margin="4"/>
+                <StackLayout>
+                    <Picker x:Name="pickerArbitro"
+                        Title="Escoge el árbitro al que realizar el informe: "
+                        FontAttributes="Bold"
+                        ItemDisplayBinding="{Binding Alias}"
+                        Margin="8,8,4,4"/>
+                    <Frame BorderColor="DarkGray" CornerRadius="10" Margin="8,4,4,4" BackgroundColor="LightCyan">
+                        <StackLayout Margin="5,2,10,5">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                <Label Text="El informe es favorable: " VerticalOptions="Center"/>
+                                <Switch x:Name="IsFavorable" IsToggled="True"/>
+                            </StackLayout>
+                            <Editor x:Name="txtInforme"
+                            AutoSize="TextChanges"
+                            Placeholder="Escriba aquí el informe"
+                            MinimumHeightRequest="300"
+                            MaxLength="6000"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnEnviar"
+                        CornerRadius="5"
+                        Text="ENVIAR INFORME"
+                        TextColor="White"
+                        BackgroundColor="DarkCyan"
+                        Clicked="BtnEnviar_Clicked"
+                        FontAttributes="Bold"
+                        Margin="8,4,4,4"
+                        FontSize="Medium"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

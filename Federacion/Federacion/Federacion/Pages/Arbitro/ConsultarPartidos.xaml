@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Arbitro.ConsultarPartidos"
+             x:Name="ConsultarPartidosPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Padding="10">
+            <StackLayout>
+                <StackLayout>
+                    <Label x:Name="lblInfo"
+                           Text="Lista de partidos: "
+                           FontSize="Medium"
+                           HorizontalOptions="Start"
+                           Margin="2,7,2,5"/>
+                    <Frame BorderColor="DarkGray" x:Name="frame">
+                        <ListView
+                        HasUnevenRows="True"
+                        IsPullToRefreshEnabled="True"
+                        x:Name="listaPartidos"
+                        SeparatorVisibility="None"
+                        Refreshing="ListaPartidos_Refreshing"
+                        HeightRequest="500">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Tapped="Partido_Tapped">
+                                        <Frame CornerRadius="10"
+                                               Margin="4"
+                                               HasShadow="True"
+                                           BackgroundColor="{Binding Color}">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Grid HorizontalOptions="StartAndExpand">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="2*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Label x:Name="lblEquipos" 
+                                                   Text="{Binding Equipos}"
+                                                   TextColor="{Binding ColorLetra}"
+                                                   FontAttributes="Bold"/>
+                                                    <Label x:Name="lblCategoria"
+                                                   Grid.Column="1"
+                                                   TextColor="{Binding ColorLetra}"
+                                                   Text="{Binding AbreviaturaCategoria}"/>
+                                                    <Label x:Name="lblFuncion"
+                                                    Grid.Row="1"
+                                                    TextColor="{Binding ColorLetra}"
+                                                    FontAttributes="Italic"
+                                                    FontSize="Medium"
+                                                    Text="{Binding DescripcionFuncion}"/>
+                                                    <Label x:Name="lblUbicacion"
+                                                    Grid.Row="2"
+                                                    TextColor="{Binding ColorLetra}"
+                                                    Text="{Binding Ubicacion}"/>
+                                                    <Label x:Name="lblFecha"
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    TextColor="{Binding ColorLetra}"
+                                                    Text="{Binding FechaPartido, StringFormat='{0:dd/MM/yy HH:mm}'}"/>
+                                                </Grid>
+                                                <Image HorizontalOptions="End"
+                                               VerticalOptions="Center"
+                                               Source="{Binding ImageSource}"
+                                               HeightRequest="40"
+                                               WidthRequest="30"></Image>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Federacion.Pages.ConsultarPartidos"
+    Title="Consultar Partidos"
+    BackgroundColor="Silver">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar
+                BackgroundColor="Silver"
+                HeightRequest="46"
+                Text="{Binding Filter, Mode=TwoWay}"
+                SearchCommand="{Binding SearchCommand}">
+            </SearchBar>
+            <ListView 
+                BackgroundColor="Silver"
+                HasUnevenRows="true" 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Lands}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="true"
+                                Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectLandCommand}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>                                 
+                                    <StackLayout 
+                                        Grid.Column="1"
+                                        VerticalOptions="Center">
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            FontSize="Medium" 
+                                            Text="{Binding Name}"
+                                            TextColor="Black">
+                                        </Label>
+                                        <Label 
+                                            Text="{Binding Capital}"
+                                            TextColor="Black">
+                                        </Label>
+                                    </StackLayout>
+                                    <Image 
+                                        Grid.Column="2"
+                                        HorizontalOptions="End" 
+                                        Source="ic_chevron_right">
+                                    </Image>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>-->

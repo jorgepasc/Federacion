@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Admin.CrearPartido"
+             Title="Nuevo Partido">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Padding="10">
+            <StackLayout Padding="5">
+                <Label Text="Datos nuevo partido: "
+                   x:Name="lblInfo"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start" 
+                   Margin="10,5,5,3"/>
+                <Frame BorderColor="Black" Margin="8,4,4,4" BackgroundColor="LightCyan">
+                    <StackLayout Padding="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Equipo Local"/>
+                                    <Entry x:Name="txtLocal"
+                                           Grid.Column="1"
+                                           Margin="40,0,0,0"
+                                           Placeholder="Nombre del equipo local"
+                                           MaxLength="45"/>
+                                </Grid>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Fecha partido "/>
+                                    <DatePicker x:Name="pickFecha" Grid.Column="1" />
+                                </Grid>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Hora partido "/>
+                                    <TimePicker x:Name="pickHora" Grid.Column="1"/>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <Grid HorizontalOptions="Start">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Equipo Visitante " HorizontalOptions="End"/>
+                                    <Entry x:Name="txtVisitante"
+                                           Grid.Column="1"
+                                           Placeholder="Nombre del equipo visitante"
+                                           MaxLength="45"/>
+                                </Grid>
+                                <Grid HorizontalOptions="Start">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Categoría" HorizontalOptions="End"/>
+                                    <Picker x:Name="pickerCategorias"
+                                            Grid.Column="1"
+                                            ItemDisplayBinding="{Binding Descripcion}"/>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Ubicación "/>
+                            <Editor x:Name="txtUbicacion"
+                                    Margin="11,0,0,0"
+                                    Grid.Column="1"
+                                    AutoSize="TextChanges"
+                                    Placeholder="Escriba la ubicación del partido"
+                                    MaxLength="200"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Observaciones "/>
+                            <Editor x:Name="txtObservaciones"
+                                    Grid.Column="1"
+                                    Margin="11,0,0,0"
+                                    Placeholder="Escriba alguna observación adicional"
+                                    AutoSize="TextChanges"
+                                    MaxLength="200"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <Grid Margin="8,7,4,7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnReiniciar"
+                        Text="REINICIAR"
+                        Clicked="BtnReiniciar_Clicked"
+                        BackgroundColor="DarkCyan"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        CornerRadius="5"
+                        TextColor="White"/>
+                    <Button x:Name="btnConfirmar"
+                        Grid.Column="1"
+                        Text="CONFIRMAR"
+                        Clicked="BtnConfirmar_Clicked"
+                        BackgroundColor="DarkCyan"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        CornerRadius="5"
+                        TextColor="White"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

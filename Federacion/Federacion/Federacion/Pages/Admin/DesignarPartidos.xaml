@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Admin.DesignarPartidos"
+             x:Name="pageDesignarPartidos">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="save.png" Text="Guardar" Clicked="BtnGuardar_Clicked"/>
+        <ToolbarItem Icon="eliminar.png" Text="Desasignar" Clicked="BtnDesasignar_Clicked"/>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <ActivityIndicator x:Name="activity"/>
+                <Label x:Name="lblInfo"
+                       Margin="4"/>
+                <Label FontAttributes="Bold"
+                   FontSize="Medium"
+                   Margin="6"
+                   Text="Disponibilidad: "/>
+                <Frame BorderColor="Black" Padding="4" BackgroundColor="LightGoldenrodYellow">
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                        <Grid Margin="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout
+                            x:Name="lblViernes"
+                            MinimumHeightRequest="45"
+                            BackgroundColor="#dafa7a"
+                            Grid.Column="0">
+                                <Label 
+                                Margin="3"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Viernes"/>
+                            </StackLayout>
+                            <StackLayout
+                            x:Name="lblSabado1"
+                            MinimumHeightRequest="45"
+                            BackgroundColor="#dafa7a"
+                            Grid.Column="1">
+                                <Label                               
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Sábado mañana"/>
+                            </StackLayout>
+                            <StackLayout
+                            x:Name="lblSabado2"
+                            MinimumHeightRequest="45"
+                            BackgroundColor="#dafa7a"
+                            Grid.Column="2">
+                                <Label 
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Sábado tarde"/>
+                            </StackLayout>
+                            <StackLayout
+                            x:Name="lblDomingo1"
+                            MinimumHeightRequest="45"
+                            BackgroundColor="#dafa7a"
+                            Grid.Column="3">
+                                <Label 
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Domingo mañana"/>
+                            </StackLayout>
+                            <StackLayout
+                            x:Name="lblDomingo2"
+                            MinimumHeightRequest="45"
+                            BackgroundColor="#dafa7a"
+                            Grid.Column="4">
+                                <Label 
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Domingo tarde"/>
+                            </StackLayout>
+                        </Grid>
+                        <Label x:Name="lblComentarios"
+                           Text="Comentarios: "
+                           Margin="0,5,5,5"/>
+                    </StackLayout>
+                </Frame>
+                <StackLayout Margin="0,5,0,5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Partidos por designar:" VerticalOptions="End" FontSize="Medium" Margin="3"/>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="End" Grid.Column="1">
+                            <Label Text="Partidos designados a"                   
+                                   VerticalOptions="End"
+                                   FontSize="Medium"/>
+                            <Label x:Name="lblAlias"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="End"
+                                   FontSize="Medium"/>
+                        </StackLayout>
+                    </Grid>
+                    <Grid Padding="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Frame BorderColor="Black"
+                               BackgroundColor="LightCyan">
+                            <StackLayout HorizontalOptions="CenterAndExpand">
+                                <SearchBar Placeholder="Filtrar por categoria" TextChanged="SearchBar_TextChanged"/>
+                                <ListView x:Name="listaAsignables"
+                                  HasUnevenRows="True"
+                                  IsPullToRefreshEnabled="False"
+                                  SeparatorVisibility="Default">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell Tapped="PartidoAsignable_Tapped">
+                                                <Frame BorderColor="Black" HasShadow="True" CornerRadius="10" Margin="3">
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="1">
+                                                        <Label x:Name="lblEquipos"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Text="{Binding Equipos}"
+                                                           FontAttributes="Bold"/>
+                                                        <Label x:Name="lblCategoria"
+                                                           HorizontalOptions="Center"
+                                                           VerticalOptions="Center"
+                                                           Text="{Binding AbreviaturaCategoria}"/>
+                                                        <Label x:Name="lblFecha"
+                                                           VerticalOptions="Center"
+                                                           HorizontalOptions="Center"
+                                                           Margin="0,0,5,0"
+                                                           Text="{Binding FechaPartido, StringFormat='{0:dd/MM/yy HH:mm}'}"/>
+                                                        <Image VerticalOptions="Center"
+                                                           HorizontalOptions="EndAndExpand"
+                                                           Source="flechaderecha.png"
+                                                           HeightRequest="40"
+                                                           WidthRequest="30"
+                                                           Margin="5,0,0,0"/>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </Frame>
+                        <Frame BorderColor="Black"
+                               Grid.Column="1"
+                               BackgroundColor="LightCyan">
+                            <StackLayout>
+                                <SearchBar Placeholder="Filtrar por categoria" TextChanged="SearchBar_TextChanged_1"/>
+                                <ListView x:Name="listaAsignados"
+                                  HasUnevenRows="True">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell Tapped="PartidoAsignado_Tapped">
+                                                <Frame BorderColor="Black" HasShadow="True" CornerRadius="10" Margin="3">
+                                                    <StackLayout Orientation="Horizontal" Padding="1" HorizontalOptions="FillAndExpand">
+                                                        <Image HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            Source="leftarrow.png"
+                                                            IsVisible="{Binding IsVisibleDesasignar}"
+                                                            HeightRequest="40"
+                                                            WidthRequest="30"/>
+                                                        <StackLayout Margin="7,0,0,0">
+                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                                <Label x:Name="lblEquipos"
+                                                                   VerticalOptions="Center"
+                                                                   Text="{Binding Equipos}"
+                                                                   FontAttributes="Bold"/>
+                                                                <Label x:Name="lblCategoria"
+                                                                    Grid.Column="2"
+                                                                    Text="{Binding AbreviaturaCategoria}"/>
+                                                                <Label x:Name="lblFecha"
+                                                                    VerticalOptions="Center"
+                                                                    Text="{Binding FechaPartido, StringFormat='{0:dd/MM/yy HH:mm}'}"/>
+                                                                <!--<ImageButton HorizontalOptions="EndAndExpand" VerticalOptions="Center"
+                                                                    HeightRequest="40" WidthRequest="40"
+                                                                    Source="details.png"
+                                                                    Clicked="BtnMasInfo_Clicked" x:Name="btnMasInfo"/>-->
+                                                            </StackLayout>
+                                                            <Label
+                                                                Text="{Binding DescripcionFuncion}"
+                                                                IsVisible="{Binding IsVisibleTextoFuncion}"
+                                                                FontAttributes="Italic"/>
+                                                            <Picker
+                                                                x:Name="cbPicker"
+                                                                VerticalOptions="Center"
+                                                                IsVisible="{Binding IsVisiblePickerFuncion}"
+                                                                ItemsSource="{Binding listaFunciones}"
+                                                                SelectedItem="{Binding Funcion}"
+                                                                ItemDisplayBinding="{Binding Descripcion}"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

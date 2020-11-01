@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Admin.DesignarArbitro"
+             Title="Designación de partidos - Árbitro">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="15">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Escoge el árbitro al que designarle partidos:"
+                    x:Name="lblInfo"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="StartAndExpand" Margin="5"
+                    FontAttributes="Bold"
+                    FontSize="Medium"/>
+                    <ImageButton Source="refresh.png"
+                           Clicked="ImageButton_Clicked"
+                           WidthRequest="40"
+                           HeightRequest="40"
+                           HorizontalOptions="End"
+                           Margin="5"/>
+                </StackLayout>
+                <Frame BorderColor="Black" BackgroundColor="LightCyan">
+                    <StackLayout>
+                        <SearchBar Placeholder="Introduce su alias" TextChanged="SearchBar_TextChanged"></SearchBar>
+                        <ListView
+                            x:Name="lista"
+                            IsPullToRefreshEnabled="True"  
+                            Refreshing="Lista_Refreshing"
+                            SeparatorVisibility="Default"   
+                            SeparatorColor="IndianRed"
+                            HeightRequest="1000"
+                            Margin="2">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Tapped="Arbitro_Tapped">
+                                        <Frame BorderColor="DarkCyan" HasShadow="True" CornerRadius="10" Margin="3">
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <StackLayout HorizontalOptions="Start">
+                                                    <Label 
+                                                        Text="{Binding Alias}"
+                                                        FontAttributes="Bold"/>
+                                                    <Label 
+                                                        Text="{Binding NumPartidos, StringFormat='Partidos ya designados = {0}'}"/>
+                                                    <Label
+                                                        Text="{Binding NombreCompleto}"/>
+                                                </StackLayout>
+                                                <!--<Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2*"/>
+                                                    <ColumnDefinition Width="3*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>-->
+                                                <Image                                                 
+                                                    Source="flechaderecha.png"
+                                                    HeightRequest="30"
+                                                    WidthRequest="30"
+                                                    Margin="15,0,5,0"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    VerticalOptions="Center"/>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

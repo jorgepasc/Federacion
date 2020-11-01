@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Admin.ConsultarResultados"
+             x:Name="ConsultarResultadosPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Padding="10">
+            <StackLayout>
+                <StackLayout Padding="7">
+                    <Label x:Name="lblInfo"
+                           Text="Lista de partidos: "
+                           FontSize="Medium"
+                           Margin="8,4,4,4"/>
+                    <Frame BorderColor="DarkGray" x:Name="frame" Padding="2" Margin="8,4,4,4" BackgroundColor="LightCyan">
+                        <StackLayout>
+                            <SearchBar Placeholder="Filtra por categoría" TextChanged="SearchBar_TextChanged" Margin="4"/>
+                            <ListView                        
+                            x:Name="listaPartidos"
+                            SeparatorVisibility="Default"
+                            HeightRequest="900">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame CornerRadius="15"
+                                           HasShadow="True" 
+                                           BorderColor="DarkCyan"
+                                           Margin="4">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="2*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <StackLayout Orientation="Horizontal" 
+                                                             VerticalOptions="Center">
+                                                        <Label Text="{Binding EquipoLocal}"/>
+                                                        <Label Text="{Binding Resultado}" 
+                                                           FontAttributes="Bold"/>
+                                                        <Label Text="{Binding EquipoVisitante}"/>
+                                                    </StackLayout>
+                                                    <Label x:Name="lblCategoria"                                                       
+                                                       Text="{Binding AbreviaturaCategoria}"
+                                                       Grid.Column="1"/>
+                                                    <Label x:Name="lblUbicacion"  
+                                                       Grid.Row="1"
+                                                       Text="{Binding Ubicacion}"/>
+                                                    <Label x:Name="lblFecha"        
+                                                       Grid.Row="1"
+                                                       Grid.Column="1"
+                                                       HorizontalOptions="Start"
+                                                       FontAttributes="Bold"
+                                                       Text="{Binding FechaPartido, StringFormat='{0:dd/MM/yy HH:mm}'}"/>
+                                                </Grid>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

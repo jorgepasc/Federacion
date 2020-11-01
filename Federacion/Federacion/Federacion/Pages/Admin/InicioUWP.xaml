@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Admin.InicioUWP"
+             Title="INICIO">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="exit.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <Label x:Name="lblInfo"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   Text="Escoge lo que quieres hacer: "
+                   Margin="5"/>
+                <Frame BorderColor="DarkGray" Margin="5" BackgroundColor="LightCyan">
+                    <ListView 
+                x:Name="listaMenu"  
+                SeparatorVisibility="Default"
+                HasUnevenRows="False"
+                        HeightRequest="1000">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Tapped="ViewCell_Tapped">
+                                    <Frame HasShadow="True"
+                                       CornerRadius="15"
+                                       Margin="2" 
+                                       BorderColor="DarkCyan">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="8*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="{Binding Source}"
+                                           HeightRequest="45"
+                                           WidthRequest="45"
+                                           Grid.Column="0"/>
+                                            <Label Text="{Binding Nombre}"
+                                           FontSize="Medium"
+                                           FontAttributes="Bold"
+                                           Grid.Column="1"/>
+                                            <Image Source="flechaderecha.png"
+                                           HorizontalOptions="End"
+                                           HeightRequest="30"
+                                           WidthRequest="30"
+                                           Grid.Column="2"/>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

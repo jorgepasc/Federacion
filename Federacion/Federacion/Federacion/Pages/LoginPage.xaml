@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Federacion.Pages.LoginPage"
+             x:Class="Federacion.Pages.LoginPage" 
+             Title="Login">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="Android" Value="15,0,15,0"/>
+            <On Platform="UWP" Value="15,20,15,0"/>
+            <On Platform="iOS" Value="15,20,15,0"/>
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ScrollView>
+        <StackLayout Padding="5">
+            <Image WidthRequest="300"
+                   HeightRequest="300"
+                   Source="logo.png"/>
+            <Grid VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="Usuario"
+                        HorizontalOptions="Start" 
+                        VerticalOptions="Center"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Grid.Column="0"/>
+                <Entry
+                        Keyboard="Default"               
+                        Placeholder="Introduzca su usuario"
+                        Grid.Column="1"
+                           x:Name="txtUsuario"/>
+                <Label Grid.Row="1" 
+                        Text="Contraseña"                         
+                        HorizontalOptions="Start" 
+                        VerticalOptions="Center"
+                        FontSize="Medium"
+                        FontAttributes="Bold"/>
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="82*"/>
+                        <ColumnDefinition Width="18*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry Keyboard="Default"               
+                        Placeholder="Introduzca su contraseña"
+                        IsPassword="True"                        
+                        x:Name="txtPass"/>
+                    <Switch x:Name="ShowPass" Toggled="ShowPass_Toggled" Grid.Column="1"/>
+                </Grid>
+            </Grid>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                <Label
+                    FontSize="Medium"
+                    Text="Recordarme"  
+                    FontAttributes="Italic"
+                    VerticalOptions="Center"/>
+                <Switch HorizontalOptions="End" x:Name="switchRecordar"/>
+            </StackLayout>
+            <Button 
+                x:Name="btnIniciar"
+                Text="ACCEDER"
+                BackgroundColor="Navy"
+                TextColor="White"
+                BorderRadius="10"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Clicked="BtnIniciar_Clicked"    
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"/>
+            <!--<ActivityIndicator VerticalOptions="CenterAndExpand"/>-->
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

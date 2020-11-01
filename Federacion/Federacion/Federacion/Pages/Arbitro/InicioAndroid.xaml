@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Arbitro.InicioAndroid"
+             Title="Inicio">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="logout.png" Clicked="BtnLogOut_Clicked" Priority="1"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Padding="10">
+            <StackLayout BackgroundColor="White">
+                <Grid RowSpacing="5" ColumnSpacing="5" VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <AbsoluteLayout Grid.Column="0" Grid.Row="0" BackgroundColor="RoyalBlue" Focused="AbsoluteLayout_Focused" Unfocused="AbsoluteLayout_Unfocused">
+                        <AbsoluteLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ConsultarPartidosTapped"/>
+                        </AbsoluteLayout.GestureRecognizers>
+                        <!--<Button AbsoluteLayout.LayoutBounds=".5,.2,.6,.3"  AbsoluteLayout.LayoutFlags="All"
+                            Text="Consultar Partidos"
+                            MinimumWidthRequest="200" MinimumHeightRequest="200"
+                            BackgroundColor="HotPink"
+                            x:Name="btnConsultarPartidos"/>-->
+                        <Image Source="partido2.png"
+                               AbsoluteLayout.LayoutFlags="All"
+                               AbsoluteLayout.LayoutBounds=".52,.1,.6,.6"
+                               WidthRequest="40"
+                               HeightRequest="40"/>
+                        <Label Text="Consultar Partidos" HorizontalTextAlignment="Center" TextColor="White" 
+                           FontAttributes="Bold" x:Name="lblConsultarPartidos"
+                           AbsoluteLayout.LayoutBounds=".5,.9,.6,.2" AbsoluteLayout.LayoutFlags="All"
+                           FontSize="Medium"/>
+                        <!--<Button Text="Borrar recuerdame" Clicked="BorrarRecuerdame_Clicked"/>-->
+                    </AbsoluteLayout>
+
+                    <AbsoluteLayout Grid.Column="1" Grid.Row="0" BackgroundColor="RoyalBlue" Focused="AbsoluteLayout_Focused" Unfocused="AbsoluteLayout_Unfocused">
+                        <AbsoluteLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ConsultarNominasTapped"/>
+                        </AbsoluteLayout.GestureRecognizers>
+                        <Image Source="nomina2.png"
+                               AbsoluteLayout.LayoutFlags="All"
+                               AbsoluteLayout.LayoutBounds=".52,.1,.6,.6"
+                               WidthRequest="40"
+                               HeightRequest="40"/>
+                        <Label x:Name="lblNomina" Text="Consultar Nómina" HorizontalTextAlignment="Center"
+                               TextColor="White" FontAttributes="Bold"
+                               AbsoluteLayout.LayoutBounds=".5,.9,.6,.2" AbsoluteLayout.LayoutFlags="All"
+                               FontSize="Medium"/>
+                    </AbsoluteLayout>
+                    
+                    
+                    <AbsoluteLayout Grid.Column="0" Grid.Row="1" BackgroundColor="RoyalBlue" Focused="AbsoluteLayout_Focused" Unfocused="AbsoluteLayout_Unfocused">
+                        <AbsoluteLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EnviarDisponibilidadTapped"/>
+                        </AbsoluteLayout.GestureRecognizers>
+                        <Image AbsoluteLayout.LayoutBounds=".52,.1,.6,.6" AbsoluteLayout.LayoutFlags="All"
+                               Source="disponibilidad3.png"
+                               WidthRequest="50"
+                               HeightRequest="50"/>
+                        <Label Text="Enviar disponibilidad" HorizontalTextAlignment="Center" TextColor="White" 
+                               FontAttributes="Bold" AbsoluteLayout.LayoutBounds=".5,.9,.6,.2" AbsoluteLayout.LayoutFlags="All"
+                               x:Name="lblEnviarDisponibilidad"
+                               FontSize="Medium"/>
+                    </AbsoluteLayout>
+                    <AbsoluteLayout Grid.Column="1" Grid.Row="1" BackgroundColor="RoyalBlue" Focused="AbsoluteLayout_Focused" Unfocused="AbsoluteLayout_Unfocused">
+                        <AbsoluteLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EnviarResultadosTapped"/>
+                        </AbsoluteLayout.GestureRecognizers>
+                        <Image AbsoluteLayout.LayoutBounds=".56,.1,.6,.6" AbsoluteLayout.LayoutFlags="All"
+                               Source="informe2.png"
+                               WidthRequest="35"
+                               HeightRequest="35"/>
+                        <Label Text="Consultar informes" HorizontalTextAlignment="Center" TextColor="White" 
+                               FontAttributes="Bold" AbsoluteLayout.LayoutBounds=".5,.9,.6,.2" AbsoluteLayout.LayoutFlags="All"
+                               FontSize="Medium"/>
+                    </AbsoluteLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

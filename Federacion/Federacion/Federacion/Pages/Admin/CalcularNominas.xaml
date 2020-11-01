@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Federacion.Pages.Admin.CalcularNominas"
+             Title="Cálculo de nóminas">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="volver.png" Text="Salir" Clicked="BtnSalir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Padding="10">
+            <StackLayout>
+                <Label FontSize="Medium"
+                       Margin="8,4,4,4"
+                       Text="Cálculo de nóminas: "/>
+                <Frame BorderColor="DarkGray" Margin="8,4,4,4" BackgroundColor="LightCyan">
+                    <StackLayout>
+                        <Picker x:Name="pickerMes"
+                                Title="Escoge el mes del que calcular las nóminas: "
+                                FontAttributes="Bold"
+                                Margin="4"
+                                ItemDisplayBinding="{Binding Nombre}"/>
+                        <Button x:Name="btnCalcular"
+                                Clicked="BtnCalcular_Clicked"
+                                CornerRadius="10"
+                                Text="CALCULAR NÓMINAS"
+                                BackgroundColor="DarkCyan"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                FontSize="Medium"
+                                Margin="4"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
